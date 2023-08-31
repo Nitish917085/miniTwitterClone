@@ -63,6 +63,7 @@
   .descriptionsCardInfo{
     margin-left: 20px;
     color: black;
+    width: 350px;
     font-size: 15px;
     margin-bottom: 5px;
 
@@ -71,6 +72,8 @@
   .titleCardInfo{
     font-size: 20px;
     margin-left: 8px;
+    width: 350px;
+
   }
 
   .commentss{

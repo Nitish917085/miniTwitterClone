@@ -1,7 +1,7 @@
 import axios from "axios"
 import Cookies from "js-cookie"
 
-const baseUrl = 'http://localhost:5000'
+const baseUrl = import.meta.env.VITE_SERVERURL
 
 const createPostApi= async (details)=>{
     const response = await axios.post(`${baseUrl}/createPost`,details)

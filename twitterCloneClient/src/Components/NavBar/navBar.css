@@ -1,10 +1,10 @@
 .navBarContainer{
     display: flex;
+    padding: 5px;
     height: 40px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: rgb(48, 83, 83);
-    position: relative;
 }
 
 .userName{
@@ -12,7 +12,6 @@
     align-items: center;
     justify-content: center;
     gap:10px;
-    position: absolute;
     right: 20px;
     justify-self: flex-end;
 }
@@ -33,4 +32,13 @@
     left: 0px;
     z-index: 10px;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.logout{
+    background-color: rgb(250, 66, 66);
+    padding: 5px 20px;
+    border-radius: 6px;
+}
+.logout:hover{
+    cursor: pointer;
+    background-color: rgb(241, 149, 133);
 }

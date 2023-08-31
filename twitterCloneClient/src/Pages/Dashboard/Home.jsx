@@ -19,8 +19,6 @@ const Home = () => {
   const user = useSelector((state) => state.user)
   const storefollowerFollowing = useSelector((state) => state.followerFollowingList)
 
-  const storeuser = useSelector((state) => console.log("storeFl", storefollowerFollowing.following))
-
   const [isProgressBarShow, setIsProgressBar] = useState(false)
   const [data, setData] = useState([]);
   const [followerFollowing, setFollowerFollowing] = useState({
@@ -58,8 +56,9 @@ const Home = () => {
   return (
     <>
       <div className="homePage">
-        <SideBar />
-
+      <div className="sidebar">
+          <SideBar />
+        </div>
         {isProgressBarShow && <div className="modal-overlay">
           <div className="modal-content">
             <CircularProgress />
@@ -82,7 +81,7 @@ const Home = () => {
                     <div className="followUnfollowButton" onClick={() => handleFollowUnfollow({ ...items, isFollow })}>{isFollow ? "UnFollow" : "Follow"}</div>
                   </div>
                 </div>
-                  <div onClick={()=>navigateToLink(items._id)}>
+                  <div  onClick={()=>navigateToLink(items._id)}>
                     <div className="cardInfo">
                       <div className="titleCardInfo">{items?.title}</div>
                       <div className="descriptionsCardInfo">{items?.description}</div>

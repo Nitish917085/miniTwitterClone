@@ -59,8 +59,8 @@ const PostDashBoard = () => {
         <div className="commentView">
           <div className="postCardComment">
             <div className="myPostsCardHeader">
-
-              <div>{data?.userName}</div>
+     
+              <div><AccountCircleIcon/> {data?.userName}</div>
               <div className="followUnfollow">
                 {/* <div>{isFollow ? "Following" : ""}</div> */}
                 {/* <div className="followUnfollowButton" onClick={() => handleFollowUnfollow({ ...items, isFollow })}>{isFollow ? "UnFollow" : "Follow"}</div> */}
@@ -68,10 +68,10 @@ const PostDashBoard = () => {
             </div>
 
             <div>
-              <div>{ }</div>
+              <h3 className="title">{data?.title }</h3>
+              <div className="description">{data?.description}</div>
               <img className="image" src={`${baseUrl}/${data?.image}`} />
             </div>
-            <div>{data?.description}</div>
           </div>
           <div className="replyCommentCard" >
             <input className="replyComment" value={comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="comment" />

@@ -12,10 +12,17 @@ const SideBar = () => {
   const hadleProfilePageButton=()=>{
     navigate('/profile')
   }
+  const handleFollowerButton=()=>{
+    navigate('/followers')
+  }
+
   return (
     <div className="sideBar">
-      <div onClick={()=>hadleHomePageButton()}>Home</div>
-      <div onClick={()=>hadleProfilePageButton()}>Profile</div>
+      <div className="navs" onClick={()=>hadleHomePageButton()}>Home</div>
+      <div className="navs" onClick={()=>hadleProfilePageButton()}>Profile</div>
+      <div className="navs" onClick={()=>handleFollowerButton()}>FollowersFollowing</div>
+
+
     </div>
   );
 };

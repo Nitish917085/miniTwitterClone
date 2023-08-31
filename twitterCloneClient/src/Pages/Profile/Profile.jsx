@@ -8,16 +8,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Cookies from "js-cookie";
 import { setFollwersFollowings } from "../../redux/reducers";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const cookie = Cookies.get("userToken")
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const user = useSelector((state) => state.user)
   const followerFollowing = useSelector((state) => state.followerFollowingList)
-  console.log("fl", followerFollowing)
-
-  console.log("useseSta", user)
 
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
@@ -52,8 +51,6 @@ const Profile = () => {
       formData.append("postId", postId)
       const res = await updatePostApi(formData)
     }
-
-
     setIsAddPost(false)
     getApiAlllBlogDataByUser()
 
@@ -85,6 +82,9 @@ const Profile = () => {
   const handleFollowerFollowingList = async () => {
     const response = await getFollowerFollowingList({ userName: user.userName, cookie })
     dispatch(setFollwersFollowings(response))
+  }
+  const navigateToLink = (id) => {
+    navigate(`/post/${id}`)
   }
   useEffect(() => {
     getApiAlllBlogDataByUser();
@@ -122,8 +122,7 @@ const Profile = () => {
                   </label>
                   <label>
                     {`Description : `}
-
-                    <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <textarea type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
 
                   </label>
                   <button type='submit'> {`${isAddEdit ? "Add Post" : "Update"}`}</button>
@@ -137,14 +136,17 @@ const Profile = () => {
               return (
                 <div className="myPostsCard">
                   <div className="myPostsCardHeader">
-                    <div>{items?.title}</div>
+
                     <div onClick={() => handleDelete(items)}><DeleteIcon /></div>
                     <div onClick={() => handleEdit(items)}><EditIcon /></div>
                   </div>
                   <div>
+                    <div className="titleCardInfo">{items?.title}</div>
+                    <div className="descriptionsCardInfo">{items?.description}</div>
+                  </div>
+                  <div onClick={() => navigateToLink(items._id)}>
                     <img className="image" src={`${baseUrl}/${items?.image}`} />
                   </div>
-                  <div>{items?.description}</div>
                 </div>
               )
             }).reverse()

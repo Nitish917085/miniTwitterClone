@@ -1,0 +1,29 @@
+.follwerContainer{
+    display: flex;
+    width: 100%;
+}
+.followers{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 50px;
+    height: calc(100vh - 40px);
+    overflow: auto;
+
+}
+
+.followersCard{
+    margin-top: 5px;
+    padding: 5px  30px;
+    border-radius: 5px;
+    background-color: rgb(201, 255, 237);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+
+    
+}
+.sidebarFollower{
+    @media (max-width:767px) {
+      display: none;
+    }
+  
+  }

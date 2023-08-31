@@ -61,3 +61,10 @@
     border: 1px solid gray;
     max-height: 100%;
 }
+.title{
+    margin-left: 10px;
+}
+.description{
+    margin-left: 20px;
+    width: 350px;
+}

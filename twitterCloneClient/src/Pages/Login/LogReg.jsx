@@ -17,8 +17,9 @@ const LogReg = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [isRegLog, setIsRegLog] = useState(true);
+  const [isRegLog, setIsRegLog] = useState(false);
   const [details, setDetails] = useState({});
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
