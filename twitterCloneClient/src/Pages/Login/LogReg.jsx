@@ -13,7 +13,7 @@ import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 
 
 const LogReg = () => {
-  
+  console.log("base",baseUrl)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

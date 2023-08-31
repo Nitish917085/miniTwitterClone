@@ -48,8 +48,9 @@ const PostDashBoard = () => {
   return (
     <>
       <div className="profile">
-        <SideBar />
-
+      <div className="sidebar">
+          <SideBar />
+        </div>
         {isProgressBarShow && <div className="modal-overlay">
           <div className="modal-content">
             <CircularProgress />
