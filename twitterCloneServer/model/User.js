@@ -15,12 +15,14 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
     },
-    blogs: [
+    posts: [
       {
         type: mongoose.Schema.ObjectId,
-        ref: "Blog",
+        ref: "Post",
       },
     ],
+    followers: [{ type: String }],
+    following: [{ type: String }],
     createdAt: {
       type: Date,
       default: Date.now,

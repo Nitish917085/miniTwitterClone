@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const blogSchema = new mongoose.Schema(
+const  postSchema = new mongoose.Schema(
   {
     userName: {
       type: String,
@@ -33,4 +33,4 @@ const blogSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Blog", blogSchema);
+module.exports = mongoose.model("Post", postSchema);

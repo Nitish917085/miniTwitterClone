@@ -19,6 +19,8 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
 }
+app.use('/',express.static('uploads'))
+
 app.use(cookieParser());
 
 app.use(express.json())
