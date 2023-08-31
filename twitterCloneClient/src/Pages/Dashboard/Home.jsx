@@ -34,7 +34,7 @@ const Home = () => {
   const handleFollowerFollowingList = async () => {
     const response = await getFollowerFollowingList({ userName: user.userName, cookie })
     dispatch(setFollwersFollowings(response))
-    setFollowerFollowing(storefollowerFollowing);
+    setFollowerFollowing(response);
     setTimeout(setIsProgressBar(false), 7000)
   }
 
@@ -72,6 +72,7 @@ const Home = () => {
             if (followerFollowing.following.find(user => user == items.userName)) {
               isFollow = true
             } else isFollow = false
+            console.log("isfollow",items.userName,isFollow)
             return (
               <div className="myPostsCard">
                 <div className="myPostsCardHeader">
