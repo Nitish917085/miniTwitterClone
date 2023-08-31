@@ -11,7 +11,9 @@ import KeyIcon from "@mui/icons-material/Key";
 import EmailIcon from "@mui/icons-material/Email";
 import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 
+
 const LogReg = () => {
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,12 +47,13 @@ const LogReg = () => {
   const checkTokenExist = async () => {
     const cookie = Cookies.get("userToken");
     if (!cookie) return;
-    const response = await axios.post(`${baseUrl}/login`, { cookie });
+
+    const response = await axios.post(`${baseUrl}/userLogin`, { cookie });
     if (response.status == 200) {
       const token = response.data.token;
       Cookies.set("userToken", token);
       dispatch(setUsers(response.data));
-      navigate(`/home/user`);
+      navigate(`/home`);
     } else return;
   };
 

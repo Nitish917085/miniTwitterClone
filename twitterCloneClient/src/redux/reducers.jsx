@@ -2,6 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user:{},
+  followerFollowingList:{
+    followers:[],
+    following:[]
+  }
 };
 
 const userSlice = createSlice({
@@ -11,9 +15,12 @@ const userSlice = createSlice({
     setUsers: (state, action) => {
       state.user = action.payload;
     },   
+    setFollwersFollowings: (state, action) => {
+      state.followerFollowingList = action.payload;
+    }, 
   },
 });
 
-export const { setUsers} = userSlice.actions;
+export const { setUsers,setFollwersFollowings} = userSlice.actions;
 
 export default userSlice.reducer;

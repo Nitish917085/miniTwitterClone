@@ -1,0 +1,9 @@
+.sideBar{
+    background-color: gray;
+    height: calc(100vh - 40px);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap:10px
+}

@@ -1,0 +1,63 @@
+.postItemsComments{
+    padding: 10px;
+}
+.commentView{
+    width: 100%;
+    display: flex;
+    height:calc(100vh - 40px);
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    overflow: auto;
+}
+.replyComment{
+    width: 347px;
+    height: 30px;
+    border: none;
+    margin-left: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.postCardComment{
+    border: 1px solid rgb(155, 80, 80);
+
+}
+
+.replyCommentCard{
+     border: 1px solid gray;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.sendIcon{
+    background-color: rgb(111, 120, 243);
+    padding-right: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.sendIcon:hover{
+    background-color: rgb(127, 127, 239);
+}
+
+.commentsCard{
+    width: 400px;
+    padding: 5px;
+    border: 1px solid gray;
+    
+}
+.commentPoster{
+    display: flex;
+    align-items: center;
+    font-size: large;
+    color: rgb(32, 33, 94);
+    gap: 3px;
+}
+.commentsContainer{
+    border: 1px solid gray;
+    max-height: 100%;
+}

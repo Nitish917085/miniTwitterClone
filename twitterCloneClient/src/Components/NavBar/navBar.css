@@ -1,0 +1,36 @@
+.navBarContainer{
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(48, 83, 83);
+    position: relative;
+}
+
+.userName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    position: absolute;
+    right: 20px;
+    justify-self: flex-end;
+}
+.isSideBarShownbutton{    
+    cursor: pointer;
+    position: absolute;
+    top: -3px;
+    left: 10px;
+    font-size: 40px;
+    z-index: 10px;
+    @media (min-width:768px) {
+        display: none;
+    }
+}
+.isSideBarShown{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    z-index: 10px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
