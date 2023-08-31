@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 require("dotenv").config()
 
 const corsOrigin ={
-  origin:['http://localhost:5173','https://mini-twitter-clone-altd.vercel.app'], 
+  origin:['http://localhost:5173','https://mini-twitter-clone-sable.vercel.app'], 
   credentials:true,            
   optionSuccessStatus:200
 }
