@@ -36,7 +36,7 @@ const LogReg = () => {
         return
        }    
       const token = response.data.token;
-      Cookies.set("userToken", token);
+      Cookies.set("userToken", token,{ expires: 7 });
       dispatch(setUsers(response.data));
       navigate(`/home`);
     }
@@ -52,7 +52,7 @@ const LogReg = () => {
     const response = await axios.post(`${baseUrl}/userLogin`, { cookie });
     if (response.status == 200) {
       const token = response.data.token;
-      Cookies.set("userToken", token);
+      Cookies.set("userToken", token,{ expires: 7 });
       dispatch(setUsers(response.data));
       navigate(`/home`);
     } else {
