@@ -49,6 +49,8 @@ const Home = () => {
   }
 
   useEffect(() => {
+    if(!user.userName)
+       navigate('/')
     getApiAlllBlogData();
     handleFollowerFollowingList();
   }, []);

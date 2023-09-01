@@ -42,6 +42,8 @@ const PostDashBoard = () => {
   }
 
   useEffect(() => {
+    if(!user.userName)
+       navigate('/')
     getPostIdDetails();
   }, []);
 

@@ -82,3 +82,6 @@
     align-items: center;
 
   }
+  .commentss:hover{
+    cursor: pointer;
+  }

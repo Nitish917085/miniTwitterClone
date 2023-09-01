@@ -87,9 +87,10 @@ const Profile = () => {
     navigate(`/post/${id}`)
   }
   useEffect(() => {
+    if (!user.userName)
+      navigate('/')
     getApiAlllBlogDataByUser();
     handleFollowerFollowingList();
-
   }, []);
 
   return (
