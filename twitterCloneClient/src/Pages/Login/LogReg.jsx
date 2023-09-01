@@ -55,7 +55,10 @@ const LogReg = () => {
       Cookies.set("userToken", token);
       dispatch(setUsers(response.data));
       navigate(`/home`);
-    } else return;
+    } else {
+      dispatch(setUsers({}));
+      return
+    };
   };
 
   useEffect(() => {
