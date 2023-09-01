@@ -13,7 +13,7 @@ import ModeCommentIcon from '@mui/icons-material/ModeComment';
 
 const Home = () => {
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const cookie = Cookies.get("userToken")
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
@@ -44,13 +44,13 @@ const Home = () => {
     handleFollowerFollowingList();
   }
 
-  const navigateToLink=(id)=>{
+  const navigateToLink = (id) => {
     navigate(`/post/${id}`)
   }
 
   useEffect(() => {
-    if(!user.userName)
-       navigate('/')
+    if (!user.userName)
+      navigate('/')
     getApiAlllBlogData();
     handleFollowerFollowingList();
   }, []);
@@ -58,7 +58,7 @@ const Home = () => {
   return (
     <>
       <div className="homePage">
-      <div className="sidebar">
+        <div className="sidebar">
           <SideBar />
         </div>
         {isProgressBarShow && <div className="modal-overlay">
@@ -74,7 +74,7 @@ const Home = () => {
             if (followerFollowing.following.find(user => user == items.userName)) {
               isFollow = true
             } else isFollow = false
-            console.log("isfollow",items.userName,isFollow)
+            console.log("isfollow", items.userName, isFollow)
             return (
               <div className="myPostsCard">
                 <div className="myPostsCardHeader">
@@ -84,17 +84,18 @@ const Home = () => {
                     <div className="followUnfollowButton" onClick={() => handleFollowUnfollow({ ...items, isFollow })}>{isFollow ? "UnFollow" : "Follow"}</div>
                   </div>
                 </div>
-                  <div  onClick={()=>navigateToLink(items._id)}>
-                    <div className="cardInfo">
-                      <div className="titleCardInfo">{items?.title}</div>
-                      <div className="descriptionsCardInfo">{items?.description}</div>
-
-                      <img className="image" src={`${baseUrl}/${items?.image}`} />
-                    </div>
-                    <div className="commentss">
-                      <ModeCommentIcon />  {` Comments`}
+                <div className="cardMiddle" onClick={() => navigateToLink(items._id)}>
+                  <div className="cardInfo">
+                    <div className="titleCardInfo">{items?.title}</div>
+                    <div className="descriptionsCardInfo">{items?.description}</div>
+                    <div className="imageContainer">
+                      <img  src={`${baseUrl}/${items?.image}`} />
                     </div>
                   </div>
+                  <div className="commentss">
+                    <ModeCommentIcon />  {` Comments`}
+                  </div>
+                </div>
               </div>
             )
           }).reverse()

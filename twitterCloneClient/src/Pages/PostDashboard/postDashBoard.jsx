@@ -61,7 +61,6 @@ const PostDashBoard = () => {
 
         <div className="commentView">
           <div className="commentViewContents">
-
             <div className="postCardComment">
               <div className="myPostsCardHeader">
 
@@ -72,12 +71,16 @@ const PostDashBoard = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="imgTitDesBody">
                 <h3 className="title">{data?.title}</h3>
                 <div className="description">{data?.description}</div>
-                <img className="image" src={`${baseUrl}/${data?.image}`} />
+                <div className="imageContainer">
+                  <img src={`${baseUrl}/${data?.image}`} />
+
+                </div>
               </div>
             </div>
+
             <div className="replyCommentCard" >
               <input className="replyComment" value={comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="comment" />
               <div className="sendIcon" onClick={(e) => handelSendComment(e.target.value)}>

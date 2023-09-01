@@ -145,8 +145,8 @@ const Profile = () => {
                     <div className="titleCardInfo">{items?.title}</div>
                     <div className="descriptionsCardInfo">{items?.description}</div>
                   </div>
-                  <div onClick={() => navigateToLink(items._id)}>
-                    <img className="image" src={`${baseUrl}/${items?.image}`} />
+                  <div className="imageContainer" onClick={() => navigateToLink(items._id)}>
+                    <img  src={`${baseUrl}/${items?.image}`} />
                   </div>
                 </div>
               )
