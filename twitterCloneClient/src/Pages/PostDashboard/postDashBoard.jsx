@@ -72,8 +72,8 @@ const PostDashBoard = () => {
               </div>
 
               <div className="imgTitDesBody">
-                <h3 className="title">{data?.title}</h3>
-                <div className="description">{data?.description}</div>
+                <h3 className="titleCardInfo">{data?.title}</h3>
+                <div className="descriptionsCardInfo">{data?.description}</div>
                 <div className="imageContainer">
                   <img src={`${baseUrl}/${data?.image}`} />
 
