@@ -13,14 +13,14 @@ import ModeCommentIcon from '@mui/icons-material/ModeComment';
 
 const Home = () => {
 
-  const navigate = useNavigate();
+  const navigate=useNavigate();
   const cookie = Cookies.get("userToken")
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-  const storefollowerFollowing = useSelector((state) => state.followerFollowingList)
 
   const [isProgressBarShow, setIsProgressBar] = useState(false)
   const [data, setData] = useState([]);
+  var [response,setResponse] =useState({})
   const [followerFollowing, setFollowerFollowing] = useState({
     followers: [],
     following: []
@@ -34,8 +34,8 @@ const Home = () => {
   const handleFollowerFollowingList = async () => {
     const response = await getFollowerFollowingList({ userName: user.userName, cookie })
     dispatch(setFollwersFollowings(response))
-    setFollowerFollowing(response);
-    setTimeout(setIsProgressBar(false), 7000)
+    setResponse(response)
+    setIsProgressBar(false)
   }
 
   const handleFollowUnfollow = async (details) => {
@@ -44,13 +44,15 @@ const Home = () => {
     handleFollowerFollowingList();
   }
 
-  const navigateToLink = (id) => {
+  const navigateToLink=(id)=>{
     navigate(`/post/${id}`)
   }
 
+  useEffect(()=>{
+    setFollowerFollowing(response);
+  },[response])
+
   useEffect(() => {
-    if (!user.userName)
-      navigate('/')
     getApiAlllBlogData();
     handleFollowerFollowingList();
   }, []);
@@ -58,7 +60,7 @@ const Home = () => {
   return (
     <>
       <div className="homePage">
-        <div className="sidebar">
+      <div className="sidebar">
           <SideBar />
         </div>
         {isProgressBarShow && <div className="modal-overlay">
@@ -71,10 +73,9 @@ const Home = () => {
           {data && data.map((items) => {
 
             var isFollow = false;
-            if (followerFollowing.following.find(user => user == items.userName)) {
+            if (followerFollowing.following && followerFollowing.following.find(user => user == items.userName)) {
               isFollow = true
             } else isFollow = false
-            console.log("isfollow", items.userName, isFollow)
             return (
               <div className="myPostsCard">
                 <div className="myPostsCardHeader">
@@ -84,18 +85,17 @@ const Home = () => {
                     <div className="followUnfollowButton" onClick={() => handleFollowUnfollow({ ...items, isFollow })}>{isFollow ? "UnFollow" : "Follow"}</div>
                   </div>
                 </div>
-                <div className="cardMiddle" onClick={() => navigateToLink(items._id)}>
-                  <div className="cardInfo">
-                    <div className="titleCardInfo">{items?.title}</div>
-                    <div className="descriptionsCardInfo">{items?.description}</div>
-                    <div className="imageContainer">
-                      <img  src={`${baseUrl}/${items?.image}`} />
+                  <div  onClick={()=>navigateToLink(items._id)}>
+                    <div className="cardInfo">
+                      <div className="titleCardInfo">{items?.title}</div>
+                      <div className="descriptionsCardInfo">{items?.description}</div>
+
+                      <img className="image" src={`${baseUrl}/${items?.image}`} />
+                    </div>
+                    <div className="commentss">
+                      <ModeCommentIcon />  {` Comments`}
                     </div>
                   </div>
-                  <div className="commentss">
-                    <ModeCommentIcon />  {` Comments`}
-                  </div>
-                </div>
               </div>
             )
           }).reverse()

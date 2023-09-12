@@ -42,15 +42,13 @@ const PostDashBoard = () => {
   }
 
   useEffect(() => {
-    if (!user.userName)
-      navigate('/')
     getPostIdDetails();
   }, []);
 
   return (
     <>
       <div className="profile">
-        <div className="sidebar">
+      <div className="sidebar">
           <SideBar />
         </div>
         {isProgressBarShow && <div className="modal-overlay">
@@ -60,46 +58,40 @@ const PostDashBoard = () => {
         </div>}
 
         <div className="commentView">
-          <div className="commentViewContents">
-            <div className="postCardComment">
-              <div className="myPostsCardHeader">
-
-                <div><AccountCircleIcon /> {data?.userName}</div>
-                <div className="followUnfollow">
-                  {/* <div>{isFollow ? "Following" : ""}</div> */}
-                  {/* <div className="followUnfollowButton" onClick={() => handleFollowUnfollow({ ...items, isFollow })}>{isFollow ? "UnFollow" : "Follow"}</div> */}
-                </div>
-              </div>
-
-              <div className="imgTitDesBody">
-                <h3 className="titleCardInfo">{data?.title}</h3>
-                <div className="descriptionsCardInfo">{data?.description}</div>
-                <div className="imageContainer">
-                  <img src={`${baseUrl}/${data?.image}`} />
-
-                </div>
+          <div className="postCardComment">
+            <div className="myPostsCardHeader">
+     
+              <div><AccountCircleIcon/> {data?.userName}</div>
+              <div className="followUnfollow">
+                {/* <div>{isFollow ? "Following" : ""}</div> */}
+                {/* <div className="followUnfollowButton" onClick={() => handleFollowUnfollow({ ...items, isFollow })}>{isFollow ? "UnFollow" : "Follow"}</div> */}
               </div>
             </div>
 
-            <div className="replyCommentCard" >
-              <input className="replyComment" value={comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="comment" />
-              <div className="sendIcon" onClick={(e) => handelSendComment(e.target.value)}>
-                <SendIcon />
-              </div>
-            </div>
-            <div className="commentsContainer">
-              {data.comments && data.comments.map((items) => {
-                return (
-                  <div className="commentsCard">
-                    <div className="commentPoster"><AccountCircleIcon /> {items.userName ? items.userName : "Anonymous"}</div>
-                    <div>{items.description}</div>
-                  </div>
-                )
-              })}
+            <div>
+              <h3 className="title">{data?.title }</h3>
+              <div className="description">{data?.description}</div>
+              <img className="image" src={`${baseUrl}/${data?.image}`} />
             </div>
           </div>
-        </div>
+          <div className="replyCommentCard" >
+            <input className="replyComment" value={comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="comment" />
+            <div className="sendIcon" onClick={(e) => handelSendComment(e.target.value)}>
+              <SendIcon />
+            </div>
+          </div>
+          <div className="commentsContainer">
+            {data.comments && data.comments.map((items) => {
+              return (
+                <div className="commentsCard">
+                  <div className="commentPoster"><AccountCircleIcon /> {items.userName ? items.userName : "Anonymous"}</div>
+                  <div>{items.description}</div>
+                </div>
+              )
+            })}
+          </div>
 
+        </div>
       </div>
     </>
   );

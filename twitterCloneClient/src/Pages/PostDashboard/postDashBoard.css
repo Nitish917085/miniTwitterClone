@@ -20,54 +20,16 @@
     outline: none;
 }
 
-.commentViewContents{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: space-between;
-   
-  }
-  @media (max-width:1100px) {
-    .commentViewContents{
-      width: 70%;   
-    }
-  }
-  @media (max-width:900px) {
-    .commentViewContents{
-      width: 80%;   
-    }
-  }
-  @media (max-width:670px) {
-    .commentViewContents{
-      width: 90%;   
-    }
-  }
-  @media (max-width:500px) {
-    .commentViewContents{
-      width: 95%;   
-    }
-  }
-
- .imgTitDesBody{
-    width: 100%;
-  }
 .postCardComment{
     border: 1px solid rgb(155, 80, 80);
-    border-radius: 5px;
-    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+
 }
-.replyComment{
-    margin-right: 5px;
-    width: 90%;
-}
+
 .replyCommentCard{
-    width: 100%;
      border: 1px solid gray;
      display: flex;
-     justify-content: space-between;
+     justify-content: center;
      align-items: center;
-     border-radius: 3px;
 }
 
 .sendIcon{
@@ -83,23 +45,26 @@
 }
 
 .commentsCard{
-    width: 90%;
+    width: 400px;
     padding: 5px;
-    margin-left: 10px; 
-    border-bottom: 1px solid rgb(223, 220, 220);
-   
+    border: 1px solid gray;
+    
 }
 .commentPoster{
     display: flex;
     align-items: center;
-    font-size: small;
+    font-size: large;
     color: rgb(32, 33, 94);
     gap: 3px;
 }
 .commentsContainer{
-    width: 100%;
     border: 1px solid gray;
     max-height: 100%;
-    font-size: smaller;
-    border-radius: 5px;
+}
+.title{
+    margin-left: 10px;
+}
+.description{
+    margin-left: 20px;
+    width: 350px;
 }
