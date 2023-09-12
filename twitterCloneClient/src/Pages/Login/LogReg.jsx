@@ -47,7 +47,10 @@ const LogReg = () => {
 
   const checkTokenExist = async () => {
     const cookie = Cookies.get("userToken");
-    if (!cookie) return;
+    if (!cookie) {
+      dispatch(setUsers({}));
+      return;
+    }
 
     const response = await axios.post(`${baseUrl}/userLogin`, { cookie });
     if (response.status == 200) {
