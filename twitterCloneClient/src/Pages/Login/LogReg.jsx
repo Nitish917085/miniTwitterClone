@@ -8,6 +8,7 @@ import { baseUrl } from "../../services/api";
 import { setUsers } from "../../redux/reducers";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyIcon from "@mui/icons-material/Key";
+import CircularProgress from '@mui/material/CircularProgress';
 import EmailIcon from "@mui/icons-material/Email";
 import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 
@@ -17,15 +18,18 @@ const LogReg = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [isProgressBarShow, setIsProgressBar] = useState(false)
   const [isRegLog, setIsRegLog] = useState(false);
   const [details, setDetails] = useState({});
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsProgressBar(true)
 
     var routeUrl = isRegLog ? "userRegistration" : "userLogin";
 
     const response = await axios.post(`${baseUrl}/${routeUrl}`, details);
+    setIsProgressBar(false)
 
     if (response.status == 201) {
       alert(response.data.error);
@@ -46,13 +50,17 @@ const LogReg = () => {
   };
 
   const checkTokenExist = async () => {
+    setIsProgressBar(true)
     const cookie = Cookies.get("userToken");
     if (!cookie) {
       dispatch(setUsers({}));
+      setIsProgressBar(false)
       return;
     }
 
     const response = await axios.post(`${baseUrl}/userLogin`, { cookie });
+    setIsProgressBar(false)
+
     if (response.status == 200) {
       const token = response.data.token;
       Cookies.set("userToken", token);
@@ -69,6 +77,11 @@ const LogReg = () => {
     <>
       <div className="logReg">
         <form className="form" onSubmit={(e) => handleSubmit(e)}>
+        {isProgressBarShow && <div className="modal-overlay">
+          <div className="modal-overlay">
+            <CircularProgress />
+          </div>
+        </div>}
           <div className="formItems">
             <PersonIcon />
             <input
